@@ -1,13 +1,7 @@
 <?php
 
-class ControllerDepartamento{
 
-    static public function controllerMostrarDepartamento($item, $valor){
-        
-        $tabla = "departamento";
+  class DepartamentoController
+  {
 
-        $respuesta = ModelDepartamento::modelMostrarDepartamento($tabla, $item, $valor);
-
-        return $respuesta;
-    }
-}
+  }
