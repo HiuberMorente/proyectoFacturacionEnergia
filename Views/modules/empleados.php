@@ -7,7 +7,7 @@ probando desde GIT XD
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1>
-            Administrar empleados 3
+            Administrar empleados 343
 
           </h1>
         </div>
