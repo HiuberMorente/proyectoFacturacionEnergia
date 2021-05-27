@@ -1,4 +1,4 @@
-probando desde GIT XD 2
+probando desde GIT XD 
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
