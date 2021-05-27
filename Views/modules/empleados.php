@@ -1,4 +1,4 @@
-
+probando desde GIT XD 
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -7,7 +7,7 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1>
-            Administrar empleados 2
+            Administrar empleados 3
 
           </h1>
         </div>
