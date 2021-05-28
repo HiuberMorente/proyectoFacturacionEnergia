@@ -59,7 +59,7 @@
 
                 $item = null;
                 $valor = null;
-                $usuarios = ControllerUsuarios::controllerMostrarUsuario($item, $valor);
+                $usuarios = UsuariosControllers::controllerMostrarUsuario($item, $valor);
 
                 foreach ($usuarios as $key => $value) {
 
@@ -71,7 +71,7 @@
                   $item = "id";
                   $valor = $value["idEmpleado"];
 
-                  $empleado = ControllerEmpleados::controllerMostrarEmpleado($item, $valor);
+                  $empleado = EmpleadosController::controllerMostrarEmpleado($item, $valor);
 
                   echo '<td>' . $empleado["nombre"] . ' '.$empleado["apellido"].'</td>';
 
@@ -208,7 +208,7 @@ MODAL REGISTRO USUARIO
 
         <?php
 
-        $crearUsuario = new ControllerUsuarios();
+        $crearUsuario = new UsuariosControllers();
         $crearUsuario->controllerCrearUsuario();
 
         ?>
@@ -322,7 +322,7 @@ MODAL EDITAR USUARIO
 
         <?php
 
-        $crearUsuario = new ControllerUsuarios();
+        $crearUsuario = new UsuariosControllers();
         $crearUsuario->controllerEditarUsuario();
 
         ?>
@@ -336,7 +336,7 @@ MODAL EDITAR USUARIO
 
 <?php 
 
-  $borrarUsuario = new ControllerUsuarios();
+  $borrarUsuario = new UsuariosControllers();
   $borrarUsuario -> controllerBorrarUsuario();
 
 ?>

@@ -1,9 +1,9 @@
 <?php
 
-require_once "../Controller/municipio.controller.php";
-require_once "../Model/municipio.model.php";
-require_once "../Controller/empleados.controller.php";
-require_once "../Model/empleados.model.php";
+require_once "../Controller/MunicipioController.php";
+require_once "../Model/MuncipioModel.php";
+require_once "../Controller/EmpleadosController.php";
+require_once "../Model/EmpleadosModel.php";
 
 
 
@@ -15,7 +15,7 @@ class AjaxEmpleados{
         $id = $_POST["id"];
         $valor = null;
 
-        $municipios = ControllerMunicipio::controllerMostrarMunicipio($id, $valor);
+        $municipios = MunicipioController::controllerMostrarMunicipio($id, $valor);
 
         //var_dump($municipios);
         // var_dump($municipios[0]["municipio"]);
@@ -52,7 +52,7 @@ class AjaxEmpleados{
         
         
 
-        $respuesta = ModelEmpleados::modelActualizarEmpleado($tabla, $item1, $valor1, $item2, $valor2);
+        $respuesta = EmpleadosModel::modelActualizarEmpleado($tabla, $item1, $valor1, $item2, $valor2);
         
     }
 

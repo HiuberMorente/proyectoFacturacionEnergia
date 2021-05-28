@@ -1,6 +1,6 @@
 <?php
 
-class ControllerUsuarios{
+class UsuariosControllers{
 
     static public function controllerUsuarioIngreso(){
 
@@ -15,7 +15,7 @@ class ControllerUsuarios{
                 $item = "usuario";
                 $valor = $_POST["ingUsuario"];
 
-                $respuesta = ModelUsuarios::modelMostrarUsuario($tabla, $item, $valor);
+                $respuesta = UsuariosModel::modelMostrarUsuario($tabla, $item, $valor);
 
                 if($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $encriptar){
 
@@ -43,7 +43,7 @@ class ControllerUsuarios{
                         $item2 = "id";
                         $valor2 = $respuesta["id"];
 
-                        $ultimo_login = ModelUsuarios::modelActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
+                        $ultimo_login = UsuariosModel::modelActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
 
                         if($ultimo_login == "ok"){
 
@@ -70,7 +70,7 @@ class ControllerUsuarios{
 
         $tabla = "loginusuarios";
 
-        $respuesta = ModelUsuarios::modelMostrarUsuario($tabla, $item, $valor);
+        $respuesta = UsuariosModel::modelMostrarUsuario($tabla, $item, $valor);
 
         return $respuesta;
     }
@@ -153,7 +153,7 @@ class ControllerUsuarios{
                       'foto' => $ruta
                   );
   
-                  $respuesta = ModelUsuarios::modelIngresarUsuario($tabla, $datos);
+                  $respuesta = UsuariosModel::modelIngresarUsuario($tabla, $datos);
   
                   if ($respuesta == "ok") {
                       echo '<script>
@@ -294,7 +294,7 @@ class ControllerUsuarios{
                     'foto' => $ruta
                 );
 
-                $respuesta = ModelUsuarios::modelEditarUsuario($tabla, $datos);
+                $respuesta = UsuariosModel::modelEditarUsuario($tabla, $datos);
 
                 if ($respuesta == "ok") {
                     echo '<script>
@@ -344,7 +344,7 @@ class ControllerUsuarios{
                 rmdir('Views/img/usuarios/'.$_GET["usuario"]);
             }
 
-            $respuesta = ModelUsuarios::modelBorrarUsuario($tabla, $datos);
+            $respuesta = UsuariosModel::modelBorrarUsuario($tabla, $datos);
 
             if ($respuesta == "ok") {
                 echo '<script>

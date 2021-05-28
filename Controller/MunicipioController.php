@@ -1,13 +1,16 @@
 <?php
 
-class ControllerMunicipio{
+  class MunicipioController
+  {
 
 
-    static public function controllerMostrarMunicipio($item, $valor){
-        $tabla = "municipio";
+    static public function controllerMostrarMunicipio($item, $valor)
+    {
 
-        $respuesta = ModelMunicipio::modelMostrarMunicipio($tabla, $item, $valor);
+      $tabla = "municipio";
 
-        return $respuesta;
+      $respuesta = MuncipioModel::modelMostrarMunicipio($tabla, $item, $valor);
+
+      return $respuesta;
     }
-}
+  }

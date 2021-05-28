@@ -1,7 +1,7 @@
 <?php 
 
-require_once "../Controller/usuarios.controller.php";
-require_once "../Model/usuarios.model.php";
+require_once "../Controller/UsuariosControllers.php";
+require_once "../Model/UsuariosModel.php";
 
 class AjaxUsuarios{
 
@@ -12,7 +12,7 @@ class AjaxUsuarios{
 
         $item = "id";
         $valor = $this -> idUsuario;
-        $respuesta = ControllerUsuarios::controllerMostrarUsuario($item, $valor);
+        $respuesta = UsuariosControllers::controllerMostrarUsuario($item, $valor);
 
         echo json_encode($respuesta);        
     }
@@ -33,7 +33,7 @@ class AjaxUsuarios{
         
         
 
-        $respuesta = ModelUsuarios::modelActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
+        $respuesta = UsuariosModel::modelActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
         
     }
 
@@ -45,7 +45,7 @@ class AjaxUsuarios{
 
         $item = "usuario";
         $valor = $this -> validarUsuario;
-        $respuesta = ControllerUsuarios::controllerMostrarUsuario($item, $valor);
+        $respuesta = UsuariosControllers::controllerMostrarUsuario($item, $valor);
 
         echo json_encode($respuesta);    
         

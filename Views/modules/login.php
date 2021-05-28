@@ -39,7 +39,7 @@
 
            <?php
 
-            $login = new ControllerUsuarios();
+            $login = new UsuariosControllers();
             $login->controllerUsuarioIngreso();
 
             ?>

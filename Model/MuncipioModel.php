@@ -2,15 +2,16 @@
 
 //require_once "conexion.php";
 
-class ModelMunicipio{
+class MuncipioModel{
 
     static public function modelMostrarMunicipio($tabla, $item, $valor){
 
         $url = "http://apienergy.herokuapp.com/api/";
 
+
         if ($item != null && $valor != null) {
 
-            $busqueda = $url.$tabla;
+            $busqueda = $url.$tabla."/".$item;
             $json = file_get_contents($busqueda);
             $datosMunicipio = json_decode($json, true);
             return $datosMunicipio;  
@@ -26,6 +27,7 @@ class ModelMunicipio{
             // $statement->closeCursor();
 
             // $statement = null;
+
 
         }else if($item != null){
 

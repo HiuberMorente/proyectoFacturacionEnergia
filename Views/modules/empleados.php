@@ -1,5 +1,4 @@
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -25,9 +24,9 @@
       <div class="card-header with-border">
 
         <button
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#modalAgregarEmpleado">
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#modalAgregarEmpleado">
           Agregar empleado
         </button>
 
@@ -38,24 +37,23 @@
           <div class="col-lg-12">
 
             <table
-                id="tabla"
-                class="table table-bordered table-striped display nowrap"
-                cellspacing="0"
-                width="100%">
+              id="tabla"
+              class="table table-bordered table-striped display nowrap"
+              width="100%">
               <thead>
-                <tr>
+              <tr>
 
-                  <th width="10px">#</th>
-                  <th>DPI</th>
-                  <th>Nombre</th>
-                  <th>Departamento</th>
-                  <th>Teléfono</th>
-                  <th>Email</th>
-                  <th>Direccion</th>
-                  <th>Estado</th>
-                  <th>Acciones</th>
+                <th width="10px">#</th>
+                <th>DPI</th>
+                <th>Nombre</th>
+                <th>Departamento</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Direccion</th>
+                <th>Estado</th>
+                <th>Acciones</th>
 
-                </tr>
+              </tr>
               </thead>
 
               <tbody>
@@ -64,7 +62,7 @@
 
                 $item = null;
                 $valor = null;
-                $empleados =ControllerEmpleados::controllerMostrarEmpleado($item, $valor);
+                $empleados = EmpleadosController::controllerMostrarEmpleado($item, $valor);
 
 
                 foreach ($empleados as $key => $value) {
@@ -74,37 +72,28 @@
                             <td>' . $value["dpi"] . '</td>
                             <td>' . $value["nombre"] . ' ' . $value['apellido'] . '</td>';
 
-                  $item =
-                      "id";
-                  $valor =
-                      $value["idDepartamentoEmpleado"];
+                  $item = $value["idDepartamentoEmpleado"];
+                  $valor = $value["idDepartamentoEmpleado"];
+                  $departamentoEmpleado = DepartamentoEmpleadosController::controllerMostrarDepartamentoEmpleado($item, $valor);
 
-                  $departamentoEmpleado =
-                      ControllerDepartamentoEmpleado::controllerMostrarDepartamentoEmpleado($item, $valor);
 
                   echo '<td>' . $departamentoEmpleado["departamento"] . '</td>
                         <td>' . $value["telefono"] . '</td>
                         <td>' . $value["email"] . '</td>';
 
-                  $item =
-                      "id";
-                  $valor =
-                      $value["idDepartamento"];
+                  $item = $value["idDepartamento"];
+                  $valor = $value["idDepartamento"];
 
-                  $departamento =
-                      ControllerDepartamento::controllerMostrarDepartamento($item, $valor);
+                  $departamento = DepartamentoController::controllerMostrarDepartamento($item, $valor);
 
-                  $item =
-                      "id";
-                  $valor =
-                      $value["idMunicipio"];
+                  $item = $value["idMunicipio"];
+                  $valor = $value["idMunicipio"];
 
-                  $municipio =
-                      ControllerMunicipio::controllerMostrarMunicipio($item, $valor);
+                  $municipio = MunicipioController::controllerMostrarMunicipio($item, $valor);
 
                   echo '<td>' . $value["direccionDomiciliar"] . ', ' . $departamento["departamento"] . ', ' . $municipio["municipio"] . '</td>';
 
-                  if ($value["estado"] != 0) {
+                  if ($value["estado"] !== 0) {
 
                     echo '<td><button
                             class="btn btn-success btn-xs btnActivarEmpleado"
@@ -174,10 +163,10 @@ MODAL HEADER
 
           <h4 class="modal-title">Agregar empleado</h4>
           <button
-              type="button"
-              class="btn-close quitarAlerta"
-              data-bs-dismiss="modal"
-              aria-label="Close"></button>
+            type="button"
+            class="btn-close quitarAlerta"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
 
         </div>
 
@@ -197,10 +186,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="nuevoDpi"
-                    placeholder="Ingresar DPI" required>
+                  type="text"
+                  class="form-control input-lg"
+                  name="nuevoDpi"
+                  placeholder="Ingresar DPI" required>
               </div>
 
 
@@ -210,10 +199,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="nuevoNombre"
-                    placeholder="Ingresar nombre" required>
+                  type="text"
+                  class="form-control input-lg"
+                  name="nuevoNombre"
+                  placeholder="Ingresar nombre" required>
               </div>
 
               <!-- apellido -->
@@ -222,10 +211,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="nuevoApellido"
-                    placeholder="Ingresar apellido" required>
+                  type="text"
+                  class="form-control input-lg"
+                  name="nuevoApellido"
+                  placeholder="Ingresar apellido" required>
               </div>
 
 
@@ -237,17 +226,14 @@ MODAL BODY
                 <select
 
 
-                    name="nuevoDepartamentoEmpleado"
-                    class="form-select text-gr">
+                  name="nuevoDepartamentoEmpleado"
+                  class="form-select text-gr">
                   <option value="0">Seleccionar Departamento</option>
                   <?php
 
-                    $item =
-                        null;
-                    $valor =
-                        null;
-                    $departamentoEmpleado =
-                        ControllerDepartamentoEmpleado::controllerMostrarDepartamentoEmpleado($item, $valor);
+                    $item = null;
+                    $valor = null;
+                    $departamentoEmpleado = DepartamentoEmpleadosController::controllerMostrarDepartamentoEmpleado($item, $valor);
 
                     foreach ($departamentoEmpleado as $key => $value) {
                       echo '<option value="' . $value["id"] . '">' . $value["departamento"] . '</option>';
@@ -263,10 +249,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="nuevoTelefono"
-                    placeholder="Ingresar telefono" required>
+                  type="text"
+                  class="form-control input-lg"
+                  name="nuevoTelefono"
+                  placeholder="Ingresar telefono" required>
               </div>
 
               <!-- email -->
@@ -275,10 +261,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="nuevoEmail"
-                    placeholder="Ingresar email" required>
+                  type="text"
+                  class="form-control input-lg"
+                  name="nuevoEmail"
+                  placeholder="Ingresar email" required>
               </div>
 
               <!-- direccion Domiciliar -->
@@ -287,10 +273,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="nuevaDireccionDomiciliar"
-                    placeholder="Ingresar domicilio" required>
+                  type="text"
+                  class="form-control input-lg"
+                  name="nuevaDireccionDomiciliar"
+                  placeholder="Ingresar domicilio" required>
               </div>
 
 
@@ -299,21 +285,18 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <select
-                    id="departamento"
-                    name="nuevoDepartamento"
-                    class="form-select text-gr"
-                    onchange="selectDepartamento()">
+                  id="departamento"
+                  name="nuevoDepartamento"
+                  class="form-select text-gr"
+                  onchange="selectDepartamento()">
                   <option value="0">Seleccionar Departamento</option>
 
                   <?php
 
-                    $item =
-                        null;
-                    $valor =
-                        null;
+                    $item = null;
+                    $valor = null;
 
-                    $departamento =
-                        ControllerDepartamento::controllerMostrarDepartamento($item, $valor);
+                    $departamento = DepartamentoController::controllerMostrarDepartamento($item, $valor);
 
                     foreach ($departamento as $key => $value) {
 
@@ -348,9 +331,9 @@ MODAL FOOTER
 ==================================-->
         <div class="modal-footer">
           <button
-              type="button"
-              class="btn btn-default d-flex quitarAlerta"
-              data-bs-dismiss="modal">
+            type="button"
+            class="btn btn-default d-flex quitarAlerta"
+            data-bs-dismiss="modal">
             Salir
           </button>
 
@@ -361,9 +344,9 @@ MODAL FOOTER
 
         <?php
 
-          $crearEmpleado =
-              new ControllerEmpleados();
-          $crearEmpleado->controllerCrearEmpleado();
+          $crearEmpleado = new EmpleadosController();
+          $crearEmpleado -> controllerCrearEmpleado();
+
 
         ?>
 
@@ -391,10 +374,10 @@ MODAL HEADER
 
           <h4 class="modal-title">Editar usuario</h4>
           <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"></button>
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
 
         </div>
 
@@ -412,10 +395,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="editarDpi"
-                    id="editarDpi" readonly>
+                  type="text"
+                  class="form-control input-lg"
+                  name="editarDpi"
+                  id="editarDpi" readonly>
               </div>
 
 
@@ -425,10 +408,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="editarNombre"
-                    id="editarNombre">
+                  type="text"
+                  class="form-control input-lg"
+                  name="editarNombre"
+                  id="editarNombre">
               </div>
 
               <!-- apellido -->
@@ -437,10 +420,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="editarApellido"
-                    id="editarApellido">
+                  type="text"
+                  class="form-control input-lg"
+                  name="editarApellido"
+                  id="editarApellido">
               </div>
 
 
@@ -450,10 +433,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="editarDepartamentoEmpleado"
-                    id="editarDepartamentoEmpleado">
+                  type="text"
+                  class="form-control input-lg"
+                  name="editarDepartamentoEmpleado"
+                  id="editarDepartamentoEmpleado">
               </div>
 
               <!-- telefomo -->
@@ -462,10 +445,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="editarTelefono"
-                    id="editarTelefono">
+                  type="text"
+                  class="form-control input-lg"
+                  name="editarTelefono"
+                  id="editarTelefono">
               </div>
 
               <!-- email -->
@@ -474,10 +457,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="editarEmail"
-                    id="editarEmail">
+                  type="text"
+                  class="form-control input-lg"
+                  name="editarEmail"
+                  id="editarEmail">
               </div>
 
               <!-- direccion Domiciliar -->
@@ -486,10 +469,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="editarDireccionDomiciliar"
-                    id="editarDireccionDomiciliar">
+                  type="text"
+                  class="form-control input-lg"
+                  name="editarDireccionDomiciliar"
+                  id="editarDireccionDomiciliar">
               </div>
 
               <!-- departamento -->
@@ -498,10 +481,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="editarDepartamento"
-                    id="editarDepartamento">
+                  type="text"
+                  class="form-control input-lg"
+                  name="editarDepartamento"
+                  id="editarDepartamento">
               </div>
 
               <!-- municipio  -->
@@ -510,10 +493,10 @@ MODAL BODY
                     <i class="fa fa-user"></i>
                 </span>
                 <input
-                    type="text"
-                    class="form-control input-lg"
-                    name="editarMunicipio"
-                    id="editarMunicipio">
+                  type="text"
+                  class="form-control input-lg"
+                  name="editarMunicipio"
+                  id="editarMunicipio">
               </div>
 
 
@@ -525,9 +508,9 @@ MODAL FOOTER
 ==================================-->
         <div class="modal-footer">
           <button
-              type="button"
-              class="btn btn-default d-flex"
-              data-bs-dismiss="modal">
+            type="button"
+            class="btn btn-default d-flex"
+            data-bs-dismiss="modal">
             Salir
           </button>
 
@@ -537,8 +520,7 @@ MODAL FOOTER
 
         <?php
 
-          $crearUsuario =
-              new ControllerUsuarios();
+          $crearUsuario = new UsuariosControllers();
           $crearUsuario->controllerEditarUsuario();
 
         ?>
@@ -552,10 +534,7 @@ MODAL FOOTER
 
 <?php
 
-  $borrarUsuario =
-      new ControllerUsuarios();
+  $borrarUsuario = new UsuariosControllers();
   $borrarUsuario->controllerBorrarUsuario();
 
 ?>
-
-
