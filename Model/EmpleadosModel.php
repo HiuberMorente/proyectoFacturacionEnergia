@@ -18,17 +18,7 @@
         $datosEmpleado = json_decode($json, true);
         return $datosEmpleado;
 
-//        $statement = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
-//
-//        $statement->bindParam(":" . $item, $valor, PDO::PARAM_STR);
-//
-//        $statement->execute();
-//
-//        return $statement->fetch();
-//
-//        $statement->closeCursor();
-//
-//        $statement = null;
+
 
       } else {
 
@@ -36,16 +26,7 @@
         $json = file_get_contents($search);
         $datosEmpleado = json_decode($json, true);
         return $datosEmpleado;
-//
-//        $statement = Conexion::conectar()->prepare("SELECT * FROM $tabla");
-//
-//        $statement->execute();
-//
-//        return $statement->fetchAll();
-//
-//        $statement->closeCursor();
-//
-//        $statement = null;
+
       }
     }
 
