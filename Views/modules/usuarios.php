@@ -1,5 +1,4 @@
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -36,26 +35,24 @@
           <div class="col-lg-12">
 
 
-          
-
             <table id="tabla" class="table table-bordered table-striped display nowrap" cellspacing="0" width="100%">
               <thead>
-                <tr>
+              <tr>
 
-                  <th width="10px">#</th>
-                  <th>Usuario</th>
-                  <th>Perfil</th>
-                  <th>Nombre</th>
-                  <th>Estado</th>
-                  <th>Último login</th>
-                  <th>Acciones</th>
+                <th width="10px">#</th>
+                <th>Usuario</th>
+                <th>Perfil</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Último login</th>
+                <th>Acciones</th>
 
-                </tr>
+              </tr>
               </thead>
 
               <tbody>
 
-                <?php
+              <?php
 
                 $item = null;
                 $valor = null;
@@ -64,24 +61,24 @@
                 foreach ($usuarios as $key => $value) {
 
                   echo '<tr>
-                          <td>'.($key + 1).'</td>
+                          <td>' . ($key + 1) . '</td>
                           <td>' . $value["usuario"] . '</td>
                           <td>' . $value["perfil"] . '</td>';
 
-                  $item = "id";
+                  $item = $value["idEmpleado"];
                   $valor = $value["idEmpleado"];
 
                   $empleado = EmpleadosController::controllerMostrarEmpleado($item, $valor);
 
-                  echo '<td>' . $empleado["nombre"] . ' '.$empleado["apellido"].'</td>';
+                  echo '<td>' . $empleado["nombre"] . ' ' . $empleado["apellido"] . '</td>';
 
-                  if($value["estado"] != 0){
+                  if ($value["estado"] != 0) {
 
-                    echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="'.$value["id"].'" estadoUsuario="0" >Activado</button></td>';
+                    echo '<td><button class="btn btn-success btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="0" >Activado</button></td>';
 
-                  }else{
+                  } else {
 
-                    echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="'.$value["id"].'" estadoUsuario="1" >Desactivado</button></td>';
+                    echo '<td><button class="btn btn-danger btn-xs btnActivar" idUsuario="' . $value["id"] . '" estadoUsuario="1" >Desactivado</button></td>';
 
                   }
                   
@@ -91,14 +88,14 @@
                             
                             <button type="" class="btn btn-warning btnEditarUsuario" idUsuario="' . $value["id"] . '" data-bs-toggle="modal" data-bs-target="#EditarUsuario"><i class="fa fa-pen text-white"></i></button>
                             
-                            <button type="" class="btn btn-danger btnEliminarUsuario" idUsuario="'.$value["id"].'"  usuario="'.$value["usuario"].'" ><i class="fa fa-times" ></i></button>
+                            <button type="" class="btn btn-danger btnEliminarUsuario" idUsuario="' . $value["id"] . '"  usuario="' . $value["usuario"] . '" ><i class="fa fa-times" ></i></button>
 
                           </div>
                         </td>
                     </tr>';
                 }
 
-                ?>
+              ?>
 
               </tbody>
 
@@ -113,10 +110,6 @@
 
   </section>
 </div>
-
-
-
-
 
 
 <!--==================================
@@ -149,15 +142,13 @@ MODAL REGISTRO USUARIO
             <div class="form-group">
 
 
-
-
-
               <!-- usuario -->
               <div class="input-group mb-3">
                 <span class="input-group-text">
                   <i class="fa fa-key"></i>
                 </span>
-                <input type="text" class="form-control input-lg" name="nuevoUsuario" id="nuevoUsuario" placeholder="Ingresar usuario" required>
+                <input type="text" class="form-control input-lg" name="nuevoUsuario" id="nuevoUsuario"
+                       placeholder="Ingresar usuario" required>
               </div>
 
 
@@ -166,7 +157,8 @@ MODAL REGISTRO USUARIO
                 <span class="input-group-text">
                   <i class="fa fa-lock"></i>
                 </span>
-                <input type="password" class="form-control input-lg" name="nuevoPassword" placeholder="Ingresar contraseña" required>
+                <input type="password" class="form-control input-lg" name="nuevoPassword"
+                       placeholder="Ingresar contraseña" required>
               </div>
 
               <!-- nombre -->
@@ -174,7 +166,8 @@ MODAL REGISTRO USUARIO
                 <span class="input-group-text">
                   <i class="fa fa-user"></i>
                 </span>
-                <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar nombre" readonly>
+                <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar nombre"
+                       readonly>
               </div>
 
               <!-- perfil -->
@@ -208,8 +201,8 @@ MODAL REGISTRO USUARIO
 
         <?php
 
-        $crearUsuario = new UsuariosControllers();
-        $crearUsuario->controllerCrearUsuario();
+          $crearUsuario = new UsuariosControllers();
+          $crearUsuario->controllerCrearUsuario();
 
         ?>
 
@@ -254,7 +247,8 @@ MODAL EDITAR USUARIO
                 <span class="input-group-text">
                   <i class="fa fa-user"></i>
                 </span>
-                <input type="text" class="form-control input-lg" name="editarNombre" id="editarNombre" value="" required>
+                <input type="text" class="form-control input-lg" name="editarNombre" id="editarNombre" value=""
+                       required>
               </div>
 
 
@@ -263,7 +257,8 @@ MODAL EDITAR USUARIO
                 <span class="input-group-text">
                   <i class="fa fa-key"></i>
                 </span>
-                <input type="text" class="form-control input-lg" name="editarUsuario" id="editarUsuario" value="" readonly>
+                <input type="text" class="form-control input-lg" name="editarUsuario" id="editarUsuario" value=""
+                       readonly>
               </div>
 
 
@@ -272,7 +267,8 @@ MODAL EDITAR USUARIO
                 <span class="input-group-text">
                   <i class="fa fa-lock"></i>
                 </span>
-                <input type="password" class="form-control input-lg" name="editarPassword" placeholder="Nueva contraseña (opcional)">
+                <input type="password" class="form-control input-lg" name="editarPassword"
+                       placeholder="Nueva contraseña (opcional)">
                 <input type="hidden" id="passwordActual" name="passwordActual">
               </div>
 
@@ -299,7 +295,8 @@ MODAL EDITAR USUARIO
                   <input type="file" class="nuevaFoto" name="editarFoto">
                   <p class="help-block">Peso máximo de la foto 2 MB</p>
 
-                  <img src="Views/img/usuarios/default/anonymous.png" alt="imag-subir" class="img-fluid img-thumbnail previsualizar" width="100px">
+                  <img src="Views/img/usuarios/default/anonymous.png" alt="imag-subir"
+                       class="img-fluid img-thumbnail previsualizar" width="100px">
 
                   <input type="hidden" name="fotoActual" id="fotoActual">
 
@@ -322,8 +319,8 @@ MODAL EDITAR USUARIO
 
         <?php
 
-        $crearUsuario = new UsuariosControllers();
-        $crearUsuario->controllerEditarUsuario();
+          $crearUsuario = new UsuariosControllers();
+          $crearUsuario->controllerEditarUsuario();
 
         ?>
 
@@ -334,9 +331,9 @@ MODAL EDITAR USUARIO
   </div>
 </div>
 
-<?php 
+<?php
 
   $borrarUsuario = new UsuariosControllers();
-  $borrarUsuario -> controllerBorrarUsuario();
+  $borrarUsuario->controllerBorrarUsuario();
 
 ?>

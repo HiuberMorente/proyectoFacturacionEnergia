@@ -17,9 +17,9 @@ class UsuariosControllers{
 
                 $respuesta = UsuariosModel::modelMostrarUsuario($tabla, $item, $valor);
 
-                if($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $encriptar){
+                if($respuesta["usuario"] === $_POST["ingUsuario"] && $respuesta["password"] === $encriptar){
 
-                    if($respuesta["estado"] == 1){
+                    if($respuesta["estado"] === 1){
 
                         $_SESSION["iniciarSesion"] = "ok";
                         $_SESSION["id"] = $respuesta["id"];
@@ -45,7 +45,7 @@ class UsuariosControllers{
 
                         $ultimo_login = UsuariosModel::modelActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
 
-                        if($ultimo_login == "ok"){
+                        if($ultimo_login === "ok"){
 
                             echo '<script> 
                                 window.location.href = "inicio";
@@ -68,15 +68,14 @@ class UsuariosControllers{
     public static function controllerMostrarUsuario($item, $valor)
     {
 
-        $tabla = "loginusuarios";
+        $tabla = "login";
 
-        $respuesta = UsuariosModel::modelMostrarUsuario($tabla, $item, $valor);
+        return UsuariosModel::modelMostrarUsuario($tabla, $item, $valor);
 
-        return $respuesta;
     }
 
       // CREAR USUARIOS
-      static public function controllerCrearUsuario(){
+      public static function controllerCrearUsuario(){
           if (isset($_POST["nuevoUsuario"])) {
               if (
                   preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
@@ -187,7 +186,7 @@ class UsuariosControllers{
       }
 
        // EDITAR USUARIOS
-    static public function controllerEditarUsuario(){
+    public static function controllerEditarUsuario(){
         if (isset($_POST["editarUsuario"])) {
             if (
                 preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])
@@ -331,7 +330,7 @@ class UsuariosControllers{
     }
 
      // BORRAR USUARIO
-     static public function controllerBorrarUsuario(){
+     public static function controllerBorrarUsuario(){
         
         if(isset($_GET["idUsuario"])){
 
