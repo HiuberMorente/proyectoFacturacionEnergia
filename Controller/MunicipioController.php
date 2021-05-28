@@ -9,7 +9,8 @@
 
       $tabla = "municipio";
 
-      return modelMostrarMunicipio($tabla, $item, $valor);
+      return MuncipioModel::modelMostrarMunicipio($tabla, $item, $valor);
+
 
     }
   }
