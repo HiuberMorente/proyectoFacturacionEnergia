@@ -2,7 +2,7 @@
 
 class UsuariosControllers{
 
-    static public function controllerUsuarioIngreso(){
+    public static function controllerUsuarioIngreso(){
 
         if (isset($_POST["ingUsuario"])) {
             if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
@@ -65,7 +65,7 @@ class UsuariosControllers{
     }
 
     // MOSTRAR USUARIOS
-    static public function controllerMostrarUsuario($item, $valor)
+    public static function controllerMostrarUsuario($item, $valor)
     {
 
         $tabla = "loginusuarios";

@@ -5,7 +5,7 @@
 class DepartamentoModel
 {
 
-  static public function modelMostrarDepartamento($tabla, $item, $valor)
+  public static function modelMostrarDepartamento($tabla, $item, $valor)
   {
     $url = "http://apienergy.herokuapp.com/api/";
     if ($item != null) {
@@ -17,14 +17,13 @@ class DepartamentoModel
       return $datosDepartamento;
 
 
-    } else {
+    }else {
 
-      $search = $url. $tabla;
+      $search = $url . $tabla;
 
       $json = file_get_contents($search);
       $datosDepartamento = json_decode($json, true);
       return $datosDepartamento;
-
     }
   }
 }

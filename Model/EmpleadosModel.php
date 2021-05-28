@@ -5,8 +5,7 @@
   class EmpleadosModel
   {
 
-
-    static public function modelMostrarEmpleado($tabla, $item, $valor)
+    public static function modelMostrarEmpleado($tabla, $item, $valor)
     {
 
       $url = "http://apienergy.herokuapp.com/api/";
@@ -51,7 +50,7 @@
     }
 
 
-    static public function modelIngresarEmpleado($tabla, $datos)
+    public static function modelIngresarEmpleado($tabla, $datos)
     {
 
       $statement = Conexion::Conectar()->prepare("INSERT INTO $tabla(dpi, nombre, apellido, idDepartamentoEmpleado, telefono, email, direccionDomiciliar, idDepartamento, idMunicipio) VALUES (:dpi, :nombre, :apellido, :idDepartamentoEmpleado, :telefono, :email, :direccionDomiciliar, :idDepartamento, :idMunicipio)");
@@ -79,7 +78,7 @@
 
 
     // ACTUALIZAR USUARIO
-    static public function modelActualizarEmpleado($tabla, $item1, $valor1, $item2, $valor2)
+    public static function modelActualizarEmpleado($tabla, $item1, $valor1, $item2, $valor2)
     {
 
       $statement = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");

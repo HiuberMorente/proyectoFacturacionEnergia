@@ -3,15 +3,12 @@
 
 class DepartamentoEmpleadosController{
 
-    static public function controllerMostrarDepartamentoEmpleado($item, $valor){
+    public static function controllerMostrarDepartamentoEmpleado($item, $valor){
 
         $tabla = "deptoempleado";
 
-        $respuesta = DepartamentoEmpleadoModel::modelMostrarDepartamentoEmpleado($tabla, $item, $valor);
+        return DepartamentoEmpleadoModel::modelMostrarDepartamentoEmpleado($tabla, $item, $valor);
 
-        return $respuesta;
     }
-
-   
     
 }

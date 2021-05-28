@@ -2,7 +2,7 @@
 
 class LayoutController{
 
-    static public function layoutController(){
+    public static function layoutController(){
         include "Views/layout.php";   
     }
 

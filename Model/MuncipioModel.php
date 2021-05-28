@@ -4,7 +4,7 @@
 
 class MuncipioModel{
 
-    static public function modelMostrarMunicipio($tabla, $item, $valor){
+    public static function modelMostrarMunicipio($tabla, $item, $valor){
 
         $url = "http://apienergy.herokuapp.com/api/";
 

@@ -6,7 +6,7 @@ class UsuariosModel
 {
 
     // MOSTRAR USUARIO
-    static public function modelMostrarUsuario($tabla, $item, $valor){
+    public static function modelMostrarUsuario($tabla, $item, $valor){
 
         if ($item != null) {
 

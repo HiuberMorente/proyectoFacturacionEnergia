@@ -3,14 +3,13 @@
 
   class DepartamentoController
   {
-    static public function controllerMostrarDepartamento($item, $valor)
+    public static function controllerMostrarDepartamento($item, $valor)
     {
 
       $tabla = "departamento";
 
-      $respuesta = DepartamentoModel::modelMostrarDepartamento($tabla, $item, $valor);
+      return DepartamentoModel::modelMostrarDepartamento($tabla, $item, $valor);
 
-      return $respuesta;
     }
 
   }

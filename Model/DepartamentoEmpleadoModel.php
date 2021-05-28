@@ -6,7 +6,7 @@
   class  DepartamentoEmpleadoModel
   {
 
-    static public function modelMostrarDepartamentoEmpleado($tabla, $item, $valor)
+    public static function modelMostrarDepartamentoEmpleado($tabla, $item, $valor)
     {
 
 

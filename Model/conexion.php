@@ -2,7 +2,7 @@
 
 class Conexion
 {
-  static public function conectar()
+  public static function conectar()
   {
 //    $link = new PDO(
 //       "mysql:host=b0eaalk0on9nwtd1xpej-mysql.services.clever-cloud.com;dbname=b0eaalk0on9nwtd1xpej",
