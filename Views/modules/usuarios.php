@@ -128,7 +128,11 @@ MODAL REGISTRO USUARIO
         <div class="modal-header bg-secondary">
 
           <h4 class="modal-title">Agregar usuario</h4>
-          <button type="button" class="btn-close quitarAlerta" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close quitarAlerta"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
 
         </div>
 
@@ -147,8 +151,12 @@ MODAL REGISTRO USUARIO
                 <span class="input-group-text">
                   <i class="fa fa-key"></i>
                 </span>
-                <input type="text" class="form-control input-lg" name="nuevoUsuario" id="nuevoUsuario"
-                       placeholder="Ingresar usuario" required>
+                <input
+                	type="text"
+                	class="form-control input-lg"
+                	name="nuevoUsuario"
+                  id="nuevoUsuario"
+                  placeholder="Ingresar usuario" required>
               </div>
 
 
@@ -157,8 +165,11 @@ MODAL REGISTRO USUARIO
                 <span class="input-group-text">
                   <i class="fa fa-lock"></i>
                 </span>
-                <input type="password" class="form-control input-lg" name="nuevoPassword"
-                       placeholder="Ingresar contraseña" required>
+                <input
+                	type="password"
+                	class="form-control input-lg"
+                	name="nuevoPassword" placeholder="Ingresar
+                  contraseña" required>
               </div>
 
               <!-- nombre -->
@@ -166,8 +177,12 @@ MODAL REGISTRO USUARIO
                 <span class="input-group-text">
                   <i class="fa fa-user"></i>
                 </span>
-                <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar nombre"
-                       readonly>
+                <input
+                	type="text"
+                	class="form-control input-lg"
+                	name="nuevoNombre"
+                  placeholder="Ingresar nombre"
+                  readonly>
               </div>
 
               <!-- perfil -->
@@ -187,6 +202,7 @@ MODAL REGISTRO USUARIO
           </div>
 
         </div>
+
 
         <!--==================================
         MODAL FOOTER
@@ -247,8 +263,13 @@ MODAL EDITAR USUARIO
                 <span class="input-group-text">
                   <i class="fa fa-user"></i>
                 </span>
-                <input type="text" class="form-control input-lg" name="editarNombre" id="editarNombre" value=""
-                       required>
+                <input
+                	type="text"
+                	class="form-control input-lg"
+                	name="editarNombre"
+                	id="editarNombre"
+                  value=""
+                  required>
               </div>
 
 
@@ -257,8 +278,13 @@ MODAL EDITAR USUARIO
                 <span class="input-group-text">
                   <i class="fa fa-key"></i>
                 </span>
-                <input type="text" class="form-control input-lg" name="editarUsuario" id="editarUsuario" value=""
-                       readonly>
+                <input
+                	type="text"
+                	class="form-control input-lg"
+                	name="editarUsuario"
+                	id="editarUsuario"
+                  value=""
+                  readonly>
               </div>
 
 
@@ -267,9 +293,15 @@ MODAL EDITAR USUARIO
                 <span class="input-group-text">
                   <i class="fa fa-lock"></i>
                 </span>
-                <input type="password" class="form-control input-lg" name="editarPassword"
-                       placeholder="Nueva contraseña (opcional)">
-                <input type="hidden" id="passwordActual" name="passwordActual">
+                <input
+                  type="password"
+                  class="form-control input-lg"
+                  name="editarPassword"
+                  placeholder="Nueva contraseña (opcional)">
+                <input
+                  type="hidden"
+                  id="passwordActual"
+                  name="passwordActual">
               </div>
 
 
