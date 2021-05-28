@@ -1,11 +1,15 @@
  <div class="login-page">
    <div class="login-box">
-     <!-- <div class="login-logo">
-       <img src="Views/img/plantilla/logo-blanco-bloque.png" alt="logo login" class="img-fluid" style="padding: 30px 100px 0px 100px">
-     </div> -->
 
      <div class="card">
        <div class="card-body login-card-body">
+         <div class="login-logo">
+           <img
+           	src="/Views/img/plantilla/bomb.png"
+           	alt="logo login"
+           	class="img-fluid" style="padding: 0 100px 0
+           100px">
+         </div>
          <p class="login-box-msg text-gray">
            <strong>Ingresar al sistema</strong>
          </p>
@@ -13,7 +17,13 @@
          <form method="post">
 
            <div class="input-group mb-3">
-             <input type="text" class="form-control" placeholder="Usuario" id="ingUsuario" name="ingUsuario" required>
+             <label for="ingUsuario"></label>
+             <input
+               type="text"
+               class="form-control"
+               placeholder="Usuario"
+               id="ingUsuario"
+               name="ingUsuario" required>
 
              <div class="input-group-append">
                <div class="input-group-text">
@@ -23,7 +33,13 @@
            </div>
 
            <div class="input-group mb-3">
-             <input type="password" class="form-control" placeholder="Contraseña" name="ingPassword" id="ingPassword">
+             <label for="ingPassword"></label>
+             <input
+               type="password"
+               class="form-control"
+               placeholder="Contraseña"
+               name="ingPassword"
+               id="ingPassword">
 
              <div class="input-group-append">
                <div class="input-group-text">
@@ -39,10 +55,14 @@
 
            <?php
 
-            $login = new UsuariosControllers();
-            $login->controllerUsuarioIngreso();
+            $login = new ReflectionMethod('UsuariosControllers', 'controllerUsuarioIngreso');
+             try {
+               $login->invoke(new UsuariosControllers());
+             } catch (ReflectionException $e) {
 
-            ?>
+             }
+
+           ?>
 
          </form>
 
