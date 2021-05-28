@@ -6,56 +6,54 @@
     public static function controllerUsuarioIngreso()
     {
 
-      if (isset($_POST["ingUsuario"])) {
-        if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])) {
+      if (isset($_POST["ingUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUsuario"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])) {
 
 
-          $curl = curl_init();
+        $curl = curl_init();
 
-          curl_setopt_array($curl, array(
-             CURLOPT_URL => 'http://apienergy.herokuapp.com/api/login',
-             CURLOPT_RETURNTRANSFER => true,
-             CURLOPT_ENCODING => '',
-             CURLOPT_MAXREDIRS => 10,
-             CURLOPT_TIMEOUT => 0,
-             CURLOPT_FOLLOWLOCATION => true,
-             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-             CURLOPT_CUSTOMREQUEST => 'POST',
-             CURLOPT_POSTFIELDS => 'user=' . $_POST["ingUsuario"] . '&pass=' . $_POST["ingPassword"] . '',
-             CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/x-www-form-urlencoded'
-             ),
-          ));
+        curl_setopt_array($curl, array(
+           CURLOPT_URL => 'https://apienergy.herokuapp.com/api/login',
+           CURLOPT_RETURNTRANSFER => true,
+           CURLOPT_ENCODING => '',
+           CURLOPT_MAXREDIRS => 10,
+           CURLOPT_TIMEOUT => 0,
+           CURLOPT_FOLLOWLOCATION => true,
+           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+           CURLOPT_CUSTOMREQUEST => 'POST',
+           CURLOPT_POSTFIELDS => 'user=' . $_POST["ingUsuario"] . '&pass=' . $_POST["ingPassword"] . '',
+           CURLOPT_HTTPHEADER => array(
+              'Content-Type: application/x-www-form-urlencoded'
+           ),
+        ));
 
-          $response = curl_exec($curl);
+        $response = curl_exec($curl);
 
-          $datos = json_decode($response, true);
+        $datos = json_decode($response, true);
 
-          curl_close($curl);
-
-
-
-          if ($response) {
-
-            $_SESSION["iniciarSesion"] = "ok";
-
-            foreach ($datos['empleado'] as $item) {
-              $_SESSION['nombre'] = $item['nombre'];
-              $_SESSION['apellido'] = $item['apellido'];
-            }
+        curl_close($curl);
 
 
 
-            echo '<script> 
-                        window.location.href = "inicio";
-                    </script>';
+        if ($response) {
 
+          $_SESSION["iniciarSesion"] = "ok";
 
-          } else {
-            echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo.</div>';
+          foreach ($datos['empleado'] as $item) {
+            $_SESSION['nombre'] = $item['nombre'];
+            $_SESSION['apellido'] = $item['apellido'];
           }
 
+
+
+          echo '<script> 
+                      window.location.href = "inicio";
+                  </script>';
+
+
+        } else {
+          echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo.</div>';
         }
+
       }
     }
 
