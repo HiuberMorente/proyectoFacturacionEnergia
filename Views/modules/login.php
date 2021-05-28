@@ -13,7 +13,7 @@
          <form method="post">
 
            <div class="input-group mb-3">
-             <input type="text" class="form-control" placeholder="Usuario" name="ingUsuario" required>
+             <input type="text" class="form-control" placeholder="Usuario" id="ingUsuario" name="ingUsuario" required>
 
              <div class="input-group-append">
                <div class="input-group-text">
@@ -23,7 +23,7 @@
            </div>
 
            <div class="input-group mb-3">
-             <input type="password" class="form-control" placeholder="Contraseña" name="ingPassword">
+             <input type="password" class="form-control" placeholder="Contraseña" name="ingPassword" id="ingPassword">
 
              <div class="input-group-append">
                <div class="input-group-text">

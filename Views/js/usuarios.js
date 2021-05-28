@@ -40,8 +40,8 @@ $(".nuevaFoto").change(function(){
 // EDITAR USUARIO
 
 $(document).on("click", ".btnEditarUsuario", function(){
-    var idUsuario = $(this).attr("idUsuario");
 
+    var idUsuario = $(this).attr("idUsuario");
     var datos = new FormData();
     datos.append("idUsuario", idUsuario);
 

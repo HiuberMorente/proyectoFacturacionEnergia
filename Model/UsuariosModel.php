@@ -10,104 +10,133 @@
     {
       $url = "http://apienergy.herokuapp.com/api/";
 
-      if ($item !== null) {
+      if ($item != null) {
 
 
-        $search = $url . $tabla."/".$item;
-        $json = file_get_contents($search);
-        return json_decode($json, true);
+        $search = $url . $tabla . "/" . $item;
+        return json_decode(file_get_contents($search), true);
+
+
+      }
+      if ($item != null && $valor != null) {
+
+        $id = $_POST["ingPassword"];
+        $user = $_POST["ingUsuario"];
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+           CURLOPT_URL => 'http://apienergy.herokuapp.com/api/' . $tabla,
+           CURLOPT_RETURNTRANSFER => true,
+           CURLOPT_ENCODING => '',
+           CURLOPT_MAXREDIRS => 10,
+           CURLOPT_TIMEOUT => 0,
+           CURLOPT_FOLLOWLOCATION => true,
+           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+           CURLOPT_CUSTOMREQUEST => 'POST',
+           CURLOPT_POSTFIELDS => 'user=' . $user . '&pass=' . $id . '',
+           CURLOPT_HTTPHEADER => array(
+              'Content-Type: application/x-www-form-urlencoded'
+           ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        return $response;
 
 
       } else {
 
         $search = $url . $tabla;
-        $json = file_get_contents($search);
-        return json_decode($json, true);
+        return json_decode(file_get_contents($search), true);
 
 
       }
     }
 
+
+
     // INGRESAR USUARIOS
-    static public function modelIngresarUsuario($tabla, $datos)
+    public static function modelIngresarUsuario($tabla, $datos)
     {
 
-      $statement = Conexion::Conectar()->prepare("INSERT INTO $tabla(nombre, usuario, `password`, perfil, foto) VALUES (:nombre, :usuario, :password, :perfil, :foto)");
-
-      $statement->bindParam(':nombre', $datos["nombre"], PDO::PARAM_STR);
-      $statement->bindParam(':usuario', $datos["usuario"], PDO::PARAM_STR);
-      $statement->bindParam(':password', $datos["password"], PDO::PARAM_STR);
-      $statement->bindParam(':perfil', $datos["perfil"], PDO::PARAM_STR);
-      $statement->bindParam(':foto', $datos["foto"], PDO::PARAM_STR);
-
-      if ($statement->execute()) {
-        return "ok";
-      } else {
-        print_r($statement->errorInfo());
-        return "error";
-      }
-
-      $statement->closeCursor();
-      $statement = null;
+//      $statement = Conexion::Conectar()->prepare("INSERT INTO $tabla(nombre, usuario, `password`, perfil, foto) VALUES (:nombre, :usuario, :password, :perfil, :foto)");
+//
+//      $statement->bindParam(':nombre', $datos["nombre"], PDO::PARAM_STR);
+//      $statement->bindParam(':usuario', $datos["usuario"], PDO::PARAM_STR);
+//      $statement->bindParam(':password', $datos["password"], PDO::PARAM_STR);
+//      $statement->bindParam(':perfil', $datos["perfil"], PDO::PARAM_STR);
+//      $statement->bindParam(':foto', $datos["foto"], PDO::PARAM_STR);
+//
+//      if ($statement->execute()) {
+//        return "ok";
+//      } else {
+//        print_r($statement->errorInfo());
+//        return "error";
+//      }
+//
+//      $statement->closeCursor();
+//      $statement = null;
     }
 
     // EDITAR USUARIOS
-    static public function modelEditarUsuario($tabla, $datos)
+    public static function modelEditarUsuario($tabla, $datos)
     {
-      $statement = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, `password` = :password, perfil =:perfil, foto = :foto WHERE usuario = :usuario");
-
-      $statement->bindParam(':nombre', $datos["nombre"], PDO::PARAM_STR);
-      $statement->bindParam(':password', $datos["password"], PDO::PARAM_STR);
-      $statement->bindParam(':perfil', $datos["perfil"], PDO::PARAM_STR);
-      $statement->bindParam(':foto', $datos["foto"], PDO::PARAM_STR);
-      $statement->bindParam(':usuario', $datos["usuario"], PDO::PARAM_STR);
-
-      if ($statement->execute()) {
-        return "ok";
-      } else {
-        print_r($statement->errorInfo());
-        return "error";
-      }
-
-      $statement->closeCursor();
-      $statement = null;
+//      $statement = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, `password` = :password, perfil =:perfil, foto = :foto WHERE usuario = :usuario");
+//
+//      $statement->bindParam(':nombre', $datos["nombre"], PDO::PARAM_STR);
+//      $statement->bindParam(':password', $datos["password"], PDO::PARAM_STR);
+//      $statement->bindParam(':perfil', $datos["perfil"], PDO::PARAM_STR);
+//      $statement->bindParam(':foto', $datos["foto"], PDO::PARAM_STR);
+//      $statement->bindParam(':usuario', $datos["usuario"], PDO::PARAM_STR);
+//
+//      if ($statement->execute()) {
+//        return "ok";
+//      } else {
+//        print_r($statement->errorInfo());
+//        return "error";
+//      }
+//
+//      $statement->closeCursor();
+//      $statement = null;
     }
 
     // ACTUALIZAR USUARIO
-    static public function modelActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2)
+    public static function modelActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2)
     {
 
-      $statement = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
-
-      $statement->bindParam(':' . $item1, $valor1, PDO::PARAM_STR);
-
-      $statement->bindParam(':' . $item2, $valor2, PDO::PARAM_STR);
-
-      if ($statement->execute()) {
-        return "ok";
-      } else {
-        return "error";
-      }
-
-      $statement->closeCursor();
-      $statement = null;
+//      $statement = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
+//
+//      $statement->bindParam(':' . $item1, $valor1, PDO::PARAM_STR);
+//
+//      $statement->bindParam(':' . $item2, $valor2, PDO::PARAM_STR);
+//
+//      if ($statement->execute()) {
+//        return "ok";
+//      } else {
+//        return "error";
+//      }
+//
+//      $statement->closeCursor();
+//      $statement = null;
     }
 
     // BORRAR USUARIO
-    static public function modelBorrarUsuario($tabla, $datos)
+    public static function modelBorrarUsuario($tabla, $datos)
     {
-      $statement = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
-
-      $statement->bindParam(":id", $datos, PDO::PARAM_INT);
-
-      if ($statement->execute()) {
-        return "ok";
-      } else {
-        return "error";
-      }
-
-      $statement->closeCursor();
-      $statement = null;
+//      $statement = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+//
+//      $statement->bindParam(":id", $datos, PDO::PARAM_INT);
+//
+//      if ($statement->execute()) {
+//        return "ok";
+//      } else {
+//        return "error";
+//      }
+//
+//      $statement->closeCursor();
+//      $statement = null;
     }
 
   }
