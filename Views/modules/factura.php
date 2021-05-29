@@ -1,51 +1,142 @@
-
 <div class="content-wrapper">
 
   <section class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>
-            Tablero
-            <small class="text-gray">Panel de Control</small>
-          </h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="inicio" class=" text-dark">Inicio</a></li>
-            <li class="breadcrumb-item active">Tablero</li>
-          </ol>
-        </div>
-      </div>
-    </div>
+
+    <h1>
+
+      Administrar ventas
+
+    </h1>
+
+    <ol class="breadcrumb">
+
+      <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
+
+      <li class="active">Administrar ventas</li>
+
+    </ol>
+
   </section>
 
-
-  <!-- Main content -->
   <section class="content">
 
-    <!-- Default box -->
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Title</h3>
+    <div class="box">
 
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-            <i class="fas fa-minus"></i>
+      <div class="box-header with-border">
+
+        <a href="crearFactura">
+
+          <button class="btn btn-primary">
+
+            Agregar venta
+
           </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
+
+        </a>
+
       </div>
-      <div class="card-body">
-        Start creating your amazing application!
+
+      <div class="box-body">
+
+        <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
+
+          <thead>
+
+          <tr>
+
+            <th style="width:10px">#</th>
+            <th>Código factura</th>
+            <th>Cliente</th>
+            <th>Vendedor</th>
+            <th>Forma de pago</th>
+            <th>Neto</th>
+            <th>Total</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+
+          </tr>
+
+          </thead>
+
+          <tbody>
+
+          <?php
+
+            $item = null;
+            $valor = null;
+
+            $respuesta = ControladorVentas::ctrMostrarVentas($item, $valor);
+
+            foreach ($respuesta as $key => $value) {
+
+
+              echo '<tr>
+
+                  <td>'.($key+1).'</td>
+
+                  <td>'.$value["codigo"].'</td>';
+
+              $itemCliente = "id";
+              $valorCliente = $value["id_cliente"];
+
+              $respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
+
+              echo '<td>'.$respuestaCliente["nombre"].'</td>';
+
+              $itemUsuario = "id";
+              $valorUsuario = $value["id_vendedor"];
+
+              $respuestaUsuario = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
+
+              echo '<td>'.$respuestaUsuario["nombre"].'</td>
+
+                  <td>'.$value["metodo_pago"].'</td>
+
+                  <td>$ '.number_format($value["neto"],2).'</td>
+
+                  <td>$ '.number_format($value["total"],2).'</td>
+
+                  <td>'.$value["fecha"].'</td>
+
+                  <td>
+
+                    <div class="btn-group">
+                        
+                      <button class="btn btn-info"><i class="fa fa-print"></i></button>
+
+                      <button class="btn btn-warning btnEditarVenta" idVenta="'.$value["id"].'"><i class="fa fa-pencil"></i></button>
+
+                      <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["id"].'"><i class="fa fa-times"></i></button>
+
+                    </div>  
+
+                  </td>
+
+                </tr>';
+            }
+
+          ?>
+
+          </tbody>
+
+        </table>
+
+        <?php
+
+          $eliminarVenta = new ControladorVentas();
+          $eliminarVenta -> ctrEliminarVenta();
+
+        ?>
+
+
       </div>
-      <div class="card-footer">
-        Footer
-      </div>
+
     </div>
 
   </section>
+
 </div>
+
+
+
 

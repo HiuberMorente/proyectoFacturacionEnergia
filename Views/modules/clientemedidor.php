@@ -318,8 +318,8 @@ MODAL FOOTER
 
         <?php
 
-          $crearEmpleado = new EmpleadosController();
-          $crearEmpleado->controllerCrearEmpleado();
+          //$crearEmpleado = new EmpleadosController();
+          //$crearEmpleado->controllerCrearEmpleado();
 
 
         ?>
@@ -494,8 +494,8 @@ MODAL FOOTER
 
         <?php
 
-          $crearUsuario = new UsuariosControllers();
-          $crearUsuario->controllerEditarUsuario();
+          //$crearUsuario = new UsuariosControllers();
+          //$crearUsuario->controllerEditarUsuario();
 
         ?>
 
@@ -508,7 +508,7 @@ MODAL FOOTER
 
 <?php
 
-  $borrarUsuario = new UsuariosControllers();
-  $borrarUsuario->controllerBorrarUsuario();
+  //$borrarUsuario = new UsuariosControllers();
+  //$borrarUsuario->controllerBorrarUsuario();
 
 ?>
