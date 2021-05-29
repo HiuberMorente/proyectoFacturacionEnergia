@@ -12,7 +12,7 @@ require_once "Model/UsuariosModel.php";
 require_once "Model/EmpleadosModel.php";
 require_once "Model/DepartamentoEmpleadoModel.php";
 require_once "Model/DepartamentoModel.php";
-require_once "Model/MuncipioModel.php";
+require_once "Model/MunicipioModel.php";
 
 
 

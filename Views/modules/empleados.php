@@ -301,7 +301,6 @@ MODAL BODY
                     foreach ($departamento as $key => $value) {
 
                       echo '<option value="' . $value["id"] . '">' . $value["departamento"] . '</option>';
-
                     }
 
                   ?>
@@ -315,7 +314,11 @@ MODAL BODY
                 <span class="input-group-text">
                     <i class="fa fa-user"></i>
                 </span>
-                <select name="nuevoMunicipio" id="municipio" class="form-select text-gr" disabled>
+                <select
+                  name="nuevoMunicipio"
+                  id="municipio"
+                  class="form-select text-gr"
+                  disabled>
                   <option value="0">Seleccione municipio</option>
                 </select>
 
@@ -345,7 +348,7 @@ MODAL FOOTER
         <?php
 
           $crearEmpleado = new EmpleadosController();
-          $crearEmpleado -> controllerCrearEmpleado();
+          $crearEmpleado->controllerCrearEmpleado();
 
 
         ?>

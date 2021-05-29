@@ -1,15 +1,19 @@
-function selectDepartamento(){
 
-    var idDepartamento = $('#departamento').val();
-    
+function selectDepartamento() {
+
+    let idDepartamento = $('#departamento').val();
+
+    console.log(idDepartamento);
+
     $.ajax({
-        method: "POST",
         url:"ajax/empleados.ajax.php",
+        method: "POST",
         data: {
             "id": idDepartamento
         },
         success: function(respuesta){
-            $('#municipio').attr('disabled', false);
+
+            $('#municipio').attr("disabled", false);
             $('#municipio').html(respuesta);
         }
     });
@@ -17,9 +21,10 @@ function selectDepartamento(){
 }
 
 
+
 // ACTIVAR USAURIO
-$(document).on("click", ".btnActivarEmpleado", function() {
-   
+$(document).on("click", ".btnActivarEmpleado", function () {
+
     var idEmpleado = $(this).attr("idEmpleado");
     var estadoEmpleado = $(this).attr("estadoEmpleado");
 
@@ -34,35 +39,35 @@ $(document).on("click", ".btnActivarEmpleado", function() {
         cache: false,
         contentType: false,
         processData: false,
-        success: function(respuesta){
-            if(window.matchMedia("(max-width: 767px)").matches){
+        success: function (respuesta) {
+            if (window.matchMedia("(max-width: 767px)").matches) {
                 Swal.fire({
                     icon: "success",
                     title: "¡El empleado ha sido actualizado!",
                     confirmButtonText: "Cerrar"
                 }).then((result) => {
-                    if(result.value){
+                    if (result.value) {
                         window.location = "empleados";
                     }
-                });    
+                });
             }
         }
     });
-    
-    if(estadoEmpleado == 0){
+
+    if (estadoEmpleado == 0) {
 
         $(this).removeClass('btn-success');
         $(this).addClass('btn-danger');
         $(this).html('Desactivado');
         $(this).attr('estadoEmpleado', 1);
-        
-    }else{
+
+    } else {
 
         $(this).addClass('btn-success');
         $(this).removeClass('btn-danger');
         $(this).html('Activado');
         $(this).attr('estadoEmpleado', 0);
-        
+
     }
-    
+
 });
