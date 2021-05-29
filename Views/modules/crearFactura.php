@@ -20,9 +20,9 @@
 
   <br><br><br>
 
-  <form method="post" action="facturas/facturas.php">
+  <form method="post" action="">
 
-    <button type="submit">GENERAR FACTURA PDF</button>
+    <button type="submit" class="btnImprimirFactura">GENERAR FACTURA PDF</button>
     <br><br>
     <table>
       <tr>

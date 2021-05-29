@@ -66,6 +66,8 @@
 
 <?php
 
+
+
   if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] === "ok") {
 
 
@@ -85,7 +87,6 @@
         $_GET["ruta"] === "usuarios" ||
         $_GET["ruta"] === "factura" ||
         $_GET["ruta"] === "crearFactura" ||
-        $_GET["ruta"] === "/facturas/factura" ||
         $_GET["ruta"] === "clientes" ||
         $_GET["ruta"] === "clientemedidor" ||
         $_GET["ruta"] === "salir"
@@ -114,6 +115,7 @@
     include "modules/login.php";
 
   }
+
 
 ?>
 
@@ -156,6 +158,9 @@
 <script src="/Views/js/usuarios.js"></script>
 
 <script src="/Views/js/empleados.js"></script>
+
+<script src="/Views/js/factura.js"></script>
+
 
 
 </body>

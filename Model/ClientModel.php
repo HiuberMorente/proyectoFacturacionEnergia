@@ -4,6 +4,9 @@
   class ClientModel
   {
 
+    /**
+     * @throws JsonException
+     */
     public static function getClients(){
 
       $curl = curl_init();
@@ -21,7 +24,7 @@
 
       $response = curl_exec($curl);
 
-      $result = json_decode($response, true);
+      $result = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
 
       curl_close($curl);
 
@@ -29,6 +32,9 @@
 
     }
 
+    /**
+     * @throws JsonException
+     */
     public static function getClientWhereId($id){
 
       $curl = curl_init();
@@ -48,7 +54,7 @@
 
 
 
-      $result = json_decode($response, true);
+      $result = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
 
       curl_close($curl);
 
