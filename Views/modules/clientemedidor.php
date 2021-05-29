@@ -66,18 +66,16 @@
                             <td>' . ($key + 1) . '</td>
                             <td>' . $value["nis"] . '</td>';
 
-                  $id = $value["idCliente"];
-                  echo $value["idCliente"];
 
+                  $id = $value["idCliente"];
 
                   $clients = ClientModel::getClientWhereId($id);
 
 
                   foreach($clients as $data => $client) {
 
-                    echo $client;
 
-//                    echo  '   <td>' . $client["nombre"] . ' '.$client["apellido"]. '</td>';
+                    echo  '<td>' .$client["nombre"] .'</td>';
 
                   }
 
@@ -85,12 +83,15 @@
 
                   $energyMeters = EnergyMeters::getEnergyMeters();
 
-                  foreach ($energyMeters as $energyMeter) {
-                    echo $energyMeters["medidor"];
+                  foreach ($energyMeters as $energyMeter => $item) {
+                   if($item['id'] === $value["idMedidor"]){
+                     echo 'si';
+                   }
+//                     echo  '   <td>' . $item["medidor"] . '</td>';
                   }
 
 
-                  // echo  '   <td>' . $value["medidor"] . '</td>';
+                  echo  '   <td>' . $value["idmedidor"] . '</td>';
 
 
                   echo  '    <td>' . $value["idRuta"] . '</td>';
