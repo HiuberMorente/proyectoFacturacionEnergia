@@ -50,7 +50,7 @@ $bloque1 = <<<EOD
 <p>hiuber@gmail.com</p>
 </div>
 
-<div></div>
+
 
 <div style="text-align: center; border: #1b1e21; padding: 0">
 <table style="text-align: center; padding: 0;">
@@ -73,7 +73,6 @@ $bloque1 = <<<EOD
 </table>
 </div>
 
-<div></div>
 
 <div style="text-align: center; border: #1b1e21; padding: 0">
 <table style="text-align: center; padding: 0;">
@@ -92,6 +91,51 @@ $bloque1 = <<<EOD
 </table>
 </div>
 
+
+<div style="text-align: center; border: #1b1e21; padding: 0">
+<table style="text-align: center; padding: 0;">
+<tr>
+<td>TOTAL A PAGAR </td>
+<td>CIFRAS </td>
+<td>ENERGIA DEL MES</td>
+</tr>
+
+<tr>
+<td> </td>
+<td>Q.42.56 Tasa de Alumbrado Publico</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Q 545 </td>
+<td>Q.  Pago convenido </td>
+<td>Q. 301 KW</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Q.0 Factura Pagada  </td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td> Cuenta Corriente   </td>
+<td></td>
+</tr>
+
+</table>
+</div>
+
+<div></div>
+<div></div>
+
+<div>
+<h5>
+Recuerde mantener su cuenta al dia y evite pagar intereses sobre montos adeudados. El plazo de vencimiento de la 
+factura es de 30 dias despues de su efecto de emision. Se emitira corte de suministro con 2 facturas vencidas
+</h5>
+</div>
 EOD;
 
 $pdf->writeHTMLCell(0, 0, '', '', $bloque1, 0, 1, 0, true, '', true);
