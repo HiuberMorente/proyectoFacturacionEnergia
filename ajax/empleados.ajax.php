@@ -12,18 +12,13 @@
     public function ajaxSelectMunicipio()
     {
 
-
       $id = $_POST["id"];
 
       $municipios = MunicipioModel::municipioWhereId($id);
 
-
       foreach ($municipios as $key => $value) {
         echo '<option value="'.$value["id"].'">'.$value["municipio"].'</option>';
       }
-
-
-
 
     }
 

@@ -85,6 +85,7 @@
         $_GET["ruta"] === "usuarios" ||
         $_GET["ruta"] === "factura" ||
         $_GET["ruta"] === "crearFactura" ||
+        $_GET["ruta"] === "/facturas/factura" ||
         $_GET["ruta"] === "clientes" ||
         $_GET["ruta"] === "clientemedidor" ||
         $_GET["ruta"] === "salir"
