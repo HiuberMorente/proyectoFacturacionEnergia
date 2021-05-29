@@ -83,6 +83,7 @@
         $_GET["ruta"] === "inicio" ||
         $_GET["ruta"] === "empleados" ||
         $_GET["ruta"] === "usuarios" ||
+        $_GET["ruta"] === "factura" ||
         $_GET["ruta"] === "clientes" ||
         $_GET["ruta"] === "clientemedidor" ||
         $_GET["ruta"] === "salir"
