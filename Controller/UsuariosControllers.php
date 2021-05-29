@@ -39,6 +39,7 @@
           $_SESSION["iniciarSesion"] = "ok";
 
           foreach ($datos['empleado'] as $item) {
+
             $_SESSION['nombre'] = $item['nombre'];
             $_SESSION['apellido'] = $item['apellido'];
           }
@@ -71,114 +72,54 @@
     // CREAR USUARIOS
     public static function controllerCrearUsuario()
     {
-//          if (isset($_POST["nuevoUsuario"])) {
-//              if (
-//                  preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
-//                  preg_match('/^[a-zA-Z0-9 ]+$/', $_POST["nuevoUsuario"]) &&
-//                  preg_match('/^[a-zA-Z0-9 ]+$/', $_POST["nuevoPassword"])
-//              ) {
-//
-//
-//                  $ruta = "";
-//                  if($_FILES["nuevaFoto"]["tmp_name"] == ""){
-//                      $_FILES["nuevaFoto"]["tmp_name"] = "Views/img/usuarios/default/anonymous.png";
-//                  }
-//                  // VALIDAR IMAGEN
-//                  if (isset($_FILES["nuevaFoto"]["tmp_name"])) {
-//
-//
-//                      list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
-//
-//                      $nuevoAncho = 500;
-//                      $nuevoAlto = 500;
-//
-//
-//                      // DIRECTORIO FOTO USUARIO
-//                      $directorio = "Views/img/usuarios/" . $_POST["nuevoUsuario"];
-//
-//                      mkdir($directorio, 0755);
-//
-//
-//                      // VALIDACIONES DE ACUERDO AL TIPO IMAGEN
-//                      if ($_FILES["nuevaFoto"]["type"] == "image/jpeg") {
-//
-//                          // GUARDAR IMAGEN EN DIRECTORIO
-//
-//                          $aleatorio = mt_rand(100, 999);
-//
-//                          $ruta = "Views/img/usuarios/" . $_POST["nuevoUsuario"] . "/" . $aleatorio . ".jpeg";
-//
-//                          $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
-//
-//                          $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-//
-//                          imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-//
-//                          imagejpeg($destino, $ruta);
-//                      }
-//
-//                      if ($_FILES["nuevaFoto"]["type"] == "image/png") {
-//
-//                          // GUARDAR IMAGEN EN DIRECTORIO
-//
-//                          $aleatorio = mt_rand(100, 999);
-//
-//                          $ruta = "Views/img/usuarios/" . $_POST["nuevoUsuario"] . "/" . $aleatorio . ".png";
-//
-//                          $origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
-//
-//                          $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-//
-//                          imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-//
-//                          imagepng($destino, $ruta);
-//                      }
-//                  }
-//
-//                  $tabla = "usuarios";
-//
-//                  $encriptar = crypt($_POST["nuevoPassword"], '$2a$07$usesomesillystringforsalt$');
-//
-//                  $datos = array(
-//                      'nombre' => $_POST["nuevoNombre"],
-//                      'usuario' => $_POST["nuevoUsuario"],
-//                      'password' => $encriptar,
-//                      'perfil' => $_POST["nuevoPerfil"],
-//                      'foto' => $ruta
-//                  );
-//
-//                  $respuesta = UsuariosModel::modelIngresarUsuario($tabla, $datos);
-//
-//                  if ($respuesta == "ok") {
-//                      echo '<script>
-//                          Swal.fire({
-//                              icon: "success",
-//                              title: "¡Usuario ha sido guardado correctamente!",
-//                              confirmButtonText: "Cerrar"
-//                          }).then((result) => {
-//                              if(result.value){
-//                                  window.location = "usuarios";
-//                              }
-//                          });
-//
-//                      </script>';
-//                  }
-//              } else {
-//                  echo '<script>
-//                  Swal.fire({
-//                      icon: "error",
-//                      title: "¡El usuario no puede ir vacío o llevar caracteres especiales!",
-//                      confirmButtonText: "Cerrar"
-//                  }).then((result) => {
-//                      if(result.value){
-//                          window.location = "usuarios";
-//                      }
-//                  });
-//
-//                  </script>';
-//              }
-//          }
+      if (isset($_POST["nuevoNombre"])) {
+        if (
+           preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
+           preg_match('/^[a-zA-Z0-9 ]+$/', $_POST["nuevoUsuario"]) &&
+           preg_match('/^[a-zA-Z0-9 ]+$/', $_POST["nuevoPassword"])
+        ) {
+
+
+          $datos = array(
+             'usuario' => $_POST["nuevoUsuario"],
+             'password' => $_POST["nuevoPassword"],
+             'idEmpleado' => $_POST["nuevoNombre"],
+             'perfil' => $_POST["nuevoPerfil"]
+
+          );
+
+          $respuesta = UsuariosModel::modelIngresarUsuario($datos);
+
+          if ($respuesta) {
+            echo '<script>
+                      Swal.fire({
+                          icon: "success",
+                          title: "¡Usuario ha sido guardado correctamente!",
+                          confirmButtonText: "Cerrar"
+                      }).then((result) => {
+                          if(result.value){
+                              window.location = "usuarios";
+                          }
+                      });    
+                    </script>';
+          } else {
+            echo '<script>
+                        Swal.fire({
+                            icon: "error",
+                            title: "¡El usuario no puede ir vacío o llevar caracteres especiales!",
+                            confirmButtonText: "Cerrar"
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = "usuarios";
+                            }
+                        });
+
+                      </script>';
+          }
+        }
+      }
     }
+
 
     // EDITAR USUARIOS
     public static function controllerEditarUsuario()

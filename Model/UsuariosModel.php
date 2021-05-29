@@ -8,9 +8,9 @@
     // MOSTRAR USUARIO
     public static function modelMostrarUsuario($tabla, $item, $valor)
     {
-      $url = "http://apienergy.herokuapp.com/api/";
+      $url = "https://apienergy.herokuapp.com/api/";
 
-      if ($item != null) {
+      if ($item !== null) {
 
 
         $search = $url . $tabla . "/" . $item;
@@ -18,7 +18,7 @@
 
 
       }
-      if ($item != null && $valor != null) {
+      if ($item !== null && $valor != null) {
 
         $id = $_POST["ingPassword"];
         $user = $_POST["ingUsuario"];
@@ -26,7 +26,7 @@
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-           CURLOPT_URL => 'http://apienergy.herokuapp.com/api/' . $tabla,
+           CURLOPT_URL => 'https://apienergy.herokuapp.com/api/' . $tabla,
            CURLOPT_RETURNTRANSFER => true,
            CURLOPT_ENCODING => '',
            CURLOPT_MAXREDIRS => 10,
@@ -56,28 +56,38 @@
     }
 
 
-
     // INGRESAR USUARIOS
-    public static function modelIngresarUsuario($tabla, $datos)
+    public static function modelIngresarUsuario($datos)
     {
 
-//      $statement = Conexion::Conectar()->prepare("INSERT INTO $tabla(nombre, usuario, `password`, perfil, foto) VALUES (:nombre, :usuario, :password, :perfil, :foto)");
-//
-//      $statement->bindParam(':nombre', $datos["nombre"], PDO::PARAM_STR);
-//      $statement->bindParam(':usuario', $datos["usuario"], PDO::PARAM_STR);
-//      $statement->bindParam(':password', $datos["password"], PDO::PARAM_STR);
-//      $statement->bindParam(':perfil', $datos["perfil"], PDO::PARAM_STR);
-//      $statement->bindParam(':foto', $datos["foto"], PDO::PARAM_STR);
-//
-//      if ($statement->execute()) {
-//        return "ok";
-//      } else {
-//        print_r($statement->errorInfo());
-//        return "error";
-//      }
-//
-//      $statement->closeCursor();
-//      $statement = null;
+      $curl = curl_init();
+
+      curl_setopt_array($curl, array(
+         CURLOPT_URL => 'https://apienergy.herokuapp.com/api/login/1',
+         CURLOPT_RETURNTRANSFER => true,
+         CURLOPT_ENCODING => '',
+         CURLOPT_MAXREDIRS => 10,
+         CURLOPT_TIMEOUT => 0,
+         CURLOPT_FOLLOWLOCATION => true,
+         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+         CURLOPT_CUSTOMREQUEST => 'PUT',
+         CURLOPT_POSTFIELDS => 'usuario='.$datos["usuario"].'&password='.$datos["password"].'&perfil='.$datos["perfil"]
+            .'&idEmpleado='.$datos["idEmpleado"].'',
+         CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/x-www-form-urlencoded'
+         ),
+      ));
+
+      $response = curl_exec($curl);
+
+      curl_close($curl);
+
+      $repuesta = json_decode($response, true);
+      curl_close($curl);
+
+      return $repuesta;
+
+
     }
 
     // EDITAR USUARIOS

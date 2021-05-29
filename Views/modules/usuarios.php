@@ -44,7 +44,6 @@
                 <th>Perfil</th>
                 <th>Nombre</th>
                 <th>Estado</th>
-                <th>Último login</th>
                 <th>Acciones</th>
 
               </tr>
@@ -82,8 +81,7 @@
 
                   }
                   
-                  echo '<td>' . $value["ultimoLogin"] . '</td>
-                        <td>
+                  echo '<td>
                           <div class="btn-group">
                             
                             <button type="" class="btn btn-warning btnEditarUsuario" idUsuario="' . $value["id"] . '" data-bs-toggle="modal" data-bs-target="#EditarUsuario"><i class="fa fa-pen text-white"></i></button>
@@ -166,24 +164,37 @@ MODAL REGISTRO USUARIO
                   <i class="fa fa-lock"></i>
                 </span>
                 <input
-                	type="password"
-                	class="form-control input-lg"
-                	name="nuevoPassword" placeholder="Ingresar
-                  contraseña" required>
+                  type="password"
+                  class="form-control input-lg"
+                  name="nuevoPassword"
+                  placeholder="Ingresar contraseña" required>
               </div>
 
-              <!-- nombre -->
               <div class="input-group mb-3">
                 <span class="input-group-text">
-                  <i class="fa fa-user"></i>
+                  <i class="fa fa-users"></i>
                 </span>
-                <input
-                	type="text"
-                	class="form-control input-lg"
-                	name="nuevoNombre"
-                  placeholder="Ingresar nombre"
-                  readonly>
+                <select name="nuevoPerfil" class="form-select text-gray">
+                  <option value="">Selecionar perfil</option>
+
+                  <?php
+
+                    $item = null;
+                    $valor = null;
+
+                    $empleado = EmpleadosController::controllerMostrarEmpleado($item, $valor);
+
+                    foreach ($empleado as $key => $value) {
+
+                      echo '<option value="' . $value["id"] . '">' . $value["nombre"] .''.$value["apellido"]. '</option>';
+                    }
+
+                  ?>
+
+
+                </select>
               </div>
+
 
               <!-- perfil -->
               <div class="input-group mb-3">
@@ -193,7 +204,7 @@ MODAL REGISTRO USUARIO
                 <select name="nuevoPerfil" class="form-select text-gray">
                   <option value="">Selecionar perfil</option>
                   <option value="Administrador">Administrador</option>
-                  <option value="Empleado">Empleado campo</option>
+                  <option value="Empleado">Empleado</option>
                 </select>
               </div>
 
@@ -217,8 +228,14 @@ MODAL REGISTRO USUARIO
 
         <?php
 
-          $crearUsuario = new UsuariosControllers();
-          $crearUsuario->controllerCrearUsuario();
+          //$crearUsuario = new UsuariosControllers();
+          //$crearUsuario->controllerCrearUsuario();
+
+          $userInsert = new ReflectionMethod('UsuariosControllers', 'controllerCrearUsuario');
+          try {
+            $userInsert->invoke(new UsuariosControllers());
+          } catch (ReflectionException $e) {
+          }
 
         ?>
 
@@ -365,7 +382,11 @@ MODAL EDITAR USUARIO
 
 <?php
 
-  $borrarUsuario = new UsuariosControllers();
-  $borrarUsuario->controllerBorrarUsuario();
+//  $userDelete = new ReflectionMethod('UsuariosControllers', 'controllerUsuarioIngreso');
+//  try {
+//    $userDelete->invoke(new UsuariosControllers());
+//  } catch (ReflectionException $e) {
+//
+//  }
 
 ?>
