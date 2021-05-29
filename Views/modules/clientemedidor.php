@@ -23,12 +23,12 @@
     <div class="card">
       <div class="card-header with-border">
 
-        <button
-           class="btn btn-primary"
-           data-bs-toggle="modal"
-           data-bs-target="#modalAgregarEmpleado">
-          Agregar empleado
-        </button>
+<!--        <button-->
+<!--           class="btn btn-primary"-->
+<!--           data-bs-toggle="modal"-->
+<!--           data-bs-target="#modalAgregarEmpleado">-->
+<!--          Agregar empleado-->
+<!--        </button>-->
 
       </div>
 
@@ -49,7 +49,7 @@
                 <th>Cliente</th>
                 <th>Medidor</th>
                 <th>Ruta</th>
-                <th>Acciones</th>
+
 
               </tr>
               </thead>
@@ -72,12 +72,16 @@
                   $clients = ClientModel::getClientWhereId($id);
 
 
-                  foreach($clients as $data => $client) {
 
+                  echo  '<td>' .$clients["nombre"] .' '.$clients["apellido"].'</td>';
 
-                    echo  '<td>' .$client["nombre"] .'</td>';
-
-                  }
+//                  foreach($dataClient as $data => $client) {
+//
+//                    $response = $client['nombre'];
+//                    //echo  '<td>' .$client["nombre"] .'</td>';
+//
+//                    echo $response;
+//                  }
 
                  // $id = $value["idMedidor"];
 
@@ -85,41 +89,15 @@
 
                   foreach ($energyMeters as $energyMeter => $item) {
                    if($item['id'] === $value["idMedidor"]){
-                     echo 'si';
+                     echo  '   <td>' . $item["medidor"] . '</td>';
                    }
 //                     echo  '   <td>' . $item["medidor"] . '</td>';
                   }
 
 
-                  echo  '   <td>' . $value["idmedidor"] . '</td>';
-
-
                   echo  '    <td>' . $value["idRuta"] . '</td>';
 
-                                    
-
-
-
-
-                  echo '<td> 
-                          <div class="btn-group">                        
-                            <button
-                                type=""
-                                class="btn btn-warning btnEditarUsuario"
-                                idClienteMedidor="' . $value["id"] . '"
-                                data-bs-toggle="modal"
-                                data-bs-target="#EditarEmpleado"><i
-                                class="fa fa-pen text-white"></i></button>
-                            
-                            <button
-                                type=""
-                                class="btn btn-danger btnEliminarUsuario"
-                                idClienteMedidor="' . $value["id"] . '" ><i
-                                class="fa fa-times" ></i></button>
-  
-                          </div>
-                         </td>
-                   </tr>';
+                  echo '</tr>';
                 }
 
               ?>

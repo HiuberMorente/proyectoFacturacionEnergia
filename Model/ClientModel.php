@@ -50,10 +50,9 @@
 
       $result = json_decode($response, true);
 
-      echo $result;
       curl_close($curl);
 
-      return $response;
+      return $result;
 
 
     }
