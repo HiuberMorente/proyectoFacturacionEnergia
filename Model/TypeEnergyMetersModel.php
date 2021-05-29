@@ -1,7 +1,7 @@
 <?php
 
 
-  class typeEnergyMeters
+  class TypeEnergyMetersModel
   {
     public static function getTypeEnergyMeters(){
 
