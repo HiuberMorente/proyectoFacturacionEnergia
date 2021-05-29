@@ -13,8 +13,9 @@ require_once "Model/EmpleadosModel.php";
 require_once "Model/DepartamentoEmpleadoModel.php";
 require_once "Model/DepartamentoModel.php";
 require_once "Model/MunicipioModel.php";
-
-
+require_once "Model/ClienteMedidorModel.php";
+require_once "Model/ClientModel.php";
+require_once "Model/EnergyMeters.php";
 
 
 $layout = new LayoutController();
