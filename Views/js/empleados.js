@@ -3,8 +3,6 @@ function selectDepartamento() {
 
     let idDepartamento = $('#departamento').val();
 
-    console.log(idDepartamento);
-
     $.ajax({
         url:"ajax/empleados.ajax.php",
         method: "POST",
