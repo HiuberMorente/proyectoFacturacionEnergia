@@ -66,7 +66,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="clientes" class="nav-link">
                 <i class="far fa-user nav-icon"></i>
                 <p>Clientes</p>
               </a>
